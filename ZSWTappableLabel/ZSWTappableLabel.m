@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, ZSWTappableLabelNotifyType) {
 @property (nonatomic) ZSWTappableLabelTouchHandling *touchHandling;
 
 @property (nonatomic) BOOL needsToWatchTouches;
-@property (nonatomic) UILongPressGestureRecognizer *longPressGR;
+@property (nonatomic) UITapGestureRecognizer *longPressGR;
 @property (nonatomic) BOOL hasCurrentEvent;
 @end
 
@@ -68,14 +68,14 @@ typedef NS_ENUM(NSInteger, ZSWTappableLabelNotifyType) {
     self.longPressDuration = 0.5;
     self.longPressAccessibilityActionName = nil; // reset value
     
-    self.longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+    self.longPressGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
     self.longPressGR.delegate = self;
     [self addGestureRecognizer:self.longPressGR];
 }
 
 - (void)setLongPressDuration:(NSTimeInterval)longPressDuration {
     _longPressDuration = longPressDuration;
-    self.longPressGR.minimumPressDuration = longPressDuration;
+    //self.longPressGR.minimumPressDuration = longPressDuration;
 }
 
 - (void)setLongPressDelegate:(id<ZSWTappableLabelLongPressDelegate>)longPressDelegate {
